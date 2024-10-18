@@ -69,4 +69,26 @@ public class EventManager : MonoBehaviour
             thisEvent.Invoke();
         }
     }
+
+    private float currentEnergy;
+    private float maxEnergy;
+    public void UpdateEnergy(float energy, float max)
+    {
+        currentEnergy = energy;
+        maxEnergy = max;
+    }
+    public float GetCurrentEnergy()
+    {
+        return currentEnergy;
+    }
+
+    public float GetMaxEnergy()
+    {
+        return maxEnergy;
+    }
+
+    public void GameOver()
+    {
+        Debug.Log("Game Over");
+    }
 }

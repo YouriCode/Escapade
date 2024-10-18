@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public float sprintSpeed = 8f;
+    float currentEnergy;
+    public float moveSpeed;
+    public float sprintSpeed;
     public float rotationSpeed = 10f;  // Vitesse de rotation
     public Transform cameraTransform;    // Référence à la caméra
 
@@ -27,6 +28,18 @@ public class PlayerController : MonoBehaviour
 
         // Déterminer la direction du mouvement
         moveInput = new Vector3(moveHorizontal, 0f, moveVertical).normalized;
+
+        currentEnergy = EventManager.instance.GetCurrentEnergy();
+        if (currentEnergy < 20f)
+        {
+            moveSpeed = 3f;
+            Debug.Log("LowEnergy");
+        }
+        else
+        {
+            moveSpeed = 5f;
+        }
+        sprintSpeed = moveSpeed * 1.5f;
 
         // Gestion du sprint
         if (Input.GetKey(KeyCode.LeftShift) && moveInput.magnitude > .5f)

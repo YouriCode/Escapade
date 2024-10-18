@@ -6,7 +6,8 @@ using UnityEngine.Events;
 public class EnergyManager : MonoBehaviour
 {
     public float maxEnergy = 100f;
-    public float energy;
+    public float currentEnergy { get; private set; }
+
     public float energyDepletionRate = 1f;
     public float energyDepletionFactor = 2f;
 
@@ -14,7 +15,7 @@ public class EnergyManager : MonoBehaviour
 
     void OnEnable()
     {
-        energy = maxEnergy;
+        currentEnergy = maxEnergy;
 
         EventManager.StartListening("OnSprint", StartSprint);
         EventManager.StartListening("OnWalk", StopSprint);
@@ -33,27 +34,26 @@ public class EnergyManager : MonoBehaviour
 
     void Update()
     {
-        if (energy > 0)
+        if (currentEnergy > 0)
         {
-            energy -= energyDepletionRate * Time.deltaTime;
+            currentEnergy -= energyDepletionRate * Time.deltaTime;
 
             if (isSprinting)
             {
-                energy -= energyDepletionRate * energyDepletionFactor * Time.deltaTime;
-                Debug.Log("sprinting");
+                currentEnergy -= energyDepletionRate * energyDepletionFactor * Time.deltaTime;
             }
             else
             {
-                energy -= energyDepletionRate * Time.deltaTime;
+                currentEnergy -= energyDepletionRate * Time.deltaTime;
             }
         }
         else
         {
-            Debug.Log("No More Energy!");
+            EventManager.instance.GameOver();
         }
 
-        energy = Mathf.Clamp(energy, 0f, 100f);
-
+        currentEnergy = Mathf.Clamp(currentEnergy, 0f, 100f);
+        EventManager.instance.UpdateEnergy(currentEnergy, maxEnergy);
     }
 
     void StartSprint()
@@ -70,6 +70,6 @@ public class EnergyManager : MonoBehaviour
 
     void LogMessage()
     {
-        Debug.Log(energy);
+        Debug.Log(currentEnergy);
     }
 }
