@@ -86,4 +86,9 @@ public class EventManager : MonoBehaviour
     {
         return maxEnergy;
     }
+
+    public void GameOver()
+    {
+        Debug.Log("Game Over");
+    }
 }

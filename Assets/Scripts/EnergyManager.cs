@@ -41,7 +41,6 @@ public class EnergyManager : MonoBehaviour
             if (isSprinting)
             {
                 currentEnergy -= energyDepletionRate * energyDepletionFactor * Time.deltaTime;
-                Debug.Log("sprinting");
             }
             else
             {
@@ -50,7 +49,7 @@ public class EnergyManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("No More Energy!");
+            EventManager.instance.GameOver();
         }
 
         currentEnergy = Mathf.Clamp(currentEnergy, 0f, 100f);
