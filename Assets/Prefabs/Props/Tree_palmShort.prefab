@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 3422537702827554956}
   - component: {fileID: 5456308694368452396}
   m_Layer: 0
-  m_Name: tree_palmShort
+  m_Name: mesh_tree_palmShort
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

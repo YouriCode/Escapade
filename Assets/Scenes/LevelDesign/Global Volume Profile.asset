@@ -229,10 +229,10 @@ MonoBehaviour:
     m_Value: 6.34
   aperture:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 12.1
   focalLength:
     m_OverrideState: 1
-    m_Value: 36
+    m_Value: 278
   bladeCount:
     m_OverrideState: 0
     m_Value: 5
