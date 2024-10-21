@@ -1,22 +1,34 @@
 using UnityEngine;
-using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class FatigueEffect : MonoBehaviour
 {
-    public PostProcessVolume postProcessVolume; // Référence au volume de post-processing
-    private ColorGrading colorGrading;
+    public Volume volume; // Référence au volume de post-processing
+    private ColorAdjustments colorAdjustments;
     private Vignette vignette;
+    private DepthOfField depthOfField;
+    public float vignetteMin = .2f;
+    public float vignetteMax = .6f;
+    public float desaturationMin = 0f;
+    public float desaturationMax = -100f;
+    public float focalLengthMin = 1f;
+    public float focalLengthMax = 20f;
 
     private void Start()
     {
-        if (postProcessVolume != null)
+        if (volume.profile.TryGet<Vignette>(out vignette))
         {
-            postProcessVolume.profile.TryGetSettings(out colorGrading);
-            postProcessVolume.profile.TryGetSettings(out vignette);
+            vignette.intensity.overrideState = true;
         }
-        else
+
+        if (volume.profile.TryGet<ColorAdjustments>(out colorAdjustments))
         {
-            Debug.LogError("PostProcessVolume is not assigned!");
+            colorAdjustments.saturation.overrideState = true;
+        }
+        if (volume.profile.TryGet<DepthOfField>(out depthOfField))
+        {
+            depthOfField.focalLength.overrideState = true;
         }
     }
 
@@ -24,11 +36,26 @@ public class FatigueEffect : MonoBehaviour
     {
         // Récupérer l'énergie actuelle depuis l'EventManager
         float currentEnergy = EventManager.instance.GetCurrentEnergy();
-        float maxEnergy = EventManager.instance.GetMaxEnergy();
+        float energyThreshold = EventManager.instance.GetEnergyThreshold();
 
-        // Ajuster les effets visuels en fonction de l'énergie
-        float fatigueFactor = 1 - (currentEnergy / maxEnergy);
-        colorGrading.saturation.value = Mathf.Lerp(0, -100, fatigueFactor);
-        vignette.intensity.value = Mathf.Lerp(0.2f, 0.6f, fatigueFactor);
+        if (currentEnergy < energyThreshold)
+        {
+            float energyPercentage = (energyThreshold - currentEnergy) / energyThreshold;
+
+            float vignetteIntensity = Mathf.Lerp(vignetteMin, vignetteMax, energyPercentage);
+            vignette.intensity.value = vignetteIntensity;
+
+            float desaturationValue = Mathf.Lerp(desaturationMin, desaturationMax, energyPercentage);
+            colorAdjustments.saturation.value = desaturationValue;
+
+            float focalLengthValue = Mathf.Lerp(focalLengthMin, focalLengthMax, energyPercentage);
+            depthOfField.focalLength.value = focalLengthValue;
+        }
+        else
+        {
+            vignette.intensity.value = vignetteMin;
+            colorAdjustments.saturation.value = desaturationMin;
+            depthOfField.focalLength.value = focalLengthMin;
+        }
     }
 }

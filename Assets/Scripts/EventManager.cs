@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -87,8 +88,17 @@ public class EventManager : MonoBehaviour
         return maxEnergy;
     }
 
+    public float energyThreshold = 50f;
+    public float GetEnergyThreshold()
+    {
+        return energyThreshold;
+    }
+
+    public GameObject character;
     public void GameOver()
     {
         Debug.Log("Game Over");
+        character.GetComponent<PlayerController>().enabled = false;
+        character.GetComponent<PickUpDrop>().enabled = false;
     }
 }

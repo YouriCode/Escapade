@@ -5,8 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     float currentEnergy;
-    public float moveSpeed;
-    public float sprintSpeed;
+    float energyThreshold;
+    float moveSpeed = 5f;
+    public float initialMoveSpeed = 5f;
+    float sprintSpeed;
+    public float sprintFactor = 1.5f;
     public float rotationSpeed = 10f;  // Vitesse de rotation
     public Transform cameraTransform;    // Référence à la caméra
 
@@ -18,6 +21,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        energyThreshold = EventManager.instance.GetEnergyThreshold();
     }
 
     void Update()
@@ -30,16 +34,16 @@ public class PlayerController : MonoBehaviour
         moveInput = new Vector3(moveHorizontal, 0f, moveVertical).normalized;
 
         currentEnergy = EventManager.instance.GetCurrentEnergy();
-        if (currentEnergy < 20f)
+        moveSpeed = initialMoveSpeed;
+        if (currentEnergy < energyThreshold)
         {
-            moveSpeed = 3f;
-            Debug.Log("LowEnergy");
+            moveSpeed = initialMoveSpeed / 2f;
         }
-        else
+        else if (currentEnergy < energyThreshold / 2)
         {
-            moveSpeed = 5f;
+            moveSpeed = initialMoveSpeed / 4f;
         }
-        sprintSpeed = moveSpeed * 1.5f;
+        sprintSpeed = moveSpeed * sprintFactor;
 
         // Gestion du sprint
         if (Input.GetKey(KeyCode.LeftShift) && moveInput.magnitude > .5f)
