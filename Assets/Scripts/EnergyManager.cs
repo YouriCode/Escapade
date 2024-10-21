@@ -19,6 +19,7 @@ public class EnergyManager : MonoBehaviour
 
         EventManager.StartListening("OnSprint", StartSprint);
         EventManager.StartListening("OnWalk", StopSprint);
+        EventManager.StartListening("OnJump", OnJump);
         // EventManager.StartListening("OnEat", RegainEnergy);
 
         //InvokeRepeating("LogMessage", 1f, 1f);
@@ -27,7 +28,7 @@ public class EnergyManager : MonoBehaviour
     void OnDisable()
     {
         EventManager.StopListening("OnSprint", StartSprint);
-        EventManager.StopListening("OnWalk", StopSprint);
+        EventManager.StopListening("OnJump", OnJump);
 
         CancelInvoke("LogMessage");
     }
@@ -64,6 +65,11 @@ public class EnergyManager : MonoBehaviour
     void StopSprint()
     {
         isSprinting = false;
+    }
+
+    void OnJump()
+    {
+        currentEnergy -= 1f;
     }
 
     //void RegainEnergy() {}

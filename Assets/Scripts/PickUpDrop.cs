@@ -44,7 +44,7 @@ public class PickUpDrop : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, pickUpRange);
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.CompareTag("Pickup"))
+            if (hitCollider.gameObject.layer == LayerMask.NameToLayer("GrabObjects"))
             {
                 PickUpObject(hitCollider.gameObject);
                 break;
@@ -76,9 +76,9 @@ public class PickUpDrop : MonoBehaviour
         carriedObject.transform.parent = null;
 
         // Positionner l'objet au sol avec une orientation verticale
-        Vector3 plantPosition = new Vector3(handPosition.position.x, 0 + plantHeightOffset, handPosition.position.z);
-        carriedObject.transform.position = plantPosition;
-        carriedObject.transform.eulerAngles = plantedRotation;
+        // Vector3 plantPosition = new Vector3(handPosition.position.x, 0 + plantHeightOffset, handPosition.position.z);
+        // carriedObject.transform.position = plantPosition;
+        // carriedObject.transform.eulerAngles = plantedRotation;
 
         // Rendre l'objet immobile mais laisser les collisions actives
         Rigidbody rb = carriedObject.GetComponent<Rigidbody>();

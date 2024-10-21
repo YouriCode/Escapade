@@ -10,9 +10,11 @@ public class PlayerController : MonoBehaviour
     public float initialMoveSpeed = 5f;
     float sprintSpeed;
     public float sprintFactor = 1.5f;
+    public float jumpForce = 7f;   // Force de saut
     public float rotationSpeed = 10f;  // Vitesse de rotation
     public Transform cameraTransform;    // Référence à la caméra
-
+    public LayerMask groundLayer;        // Layer pour détecter le sol
+    private bool isGrounded;
     private Rigidbody rb;
     private Vector3 moveInput;
     private Vector3 moveVelocity;
@@ -78,6 +80,14 @@ public class PlayerController : MonoBehaviour
         {
             RotateTowardsMovementDirection(moveDirection);
         }
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Jump();
+        }
+
+        // Vérifier si le joueur est au sol
+        CheckGroundStatus();
     }
 
     void FixedUpdate()
@@ -85,6 +95,21 @@ public class PlayerController : MonoBehaviour
         // Appliquer le mouvement au Rigidbody
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
     }
+
+    private void Jump()
+    {
+        rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        isGrounded = false;  // Le joueur n'est plus au sol après avoir sauté
+        EventManager.TriggerEvent("OnJump");
+    }
+
+    // Vérifier si le joueur est au sol
+    private void CheckGroundStatus()
+    {
+        // Raycast pour vérifier si le joueur touche le sol
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f, groundLayer);
+    }
+
 
     // Fonction pour faire tourner le personnage vers la direction du mouvement
     private void RotateTowardsMovementDirection(Vector3 movementDirection)
