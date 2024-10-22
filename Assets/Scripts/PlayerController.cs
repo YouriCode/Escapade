@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveVelocity;
     private bool isSprinting = false;
     private Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -52,15 +53,12 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && moveInput.magnitude > .5f)
         {
             isSprinting = true;
-            animator.SetBool("isSprinting", true);
             EventManager.TriggerEvent("OnSprint");
         }
         else
         {
             isSprinting = false;
-            animator.SetBool("isSprinting", false);
             EventManager.TriggerEvent("OnWalk");
-
         }
 
         // Calculer la direction de mouvement par rapport à la caméra
@@ -91,8 +89,9 @@ public class PlayerController : MonoBehaviour
 
         // Vérifier si le joueur est au sol
         CheckGroundStatus();
-        //animator.SetBool("isSprinting", isSprinting);
-        //animator.SetBool("isJumping", !isGrounded);
+
+        // Gérer les animations
+        HandleAnimations();
     }
 
     void FixedUpdate()
@@ -106,25 +105,58 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isGrounded = false;  // Le joueur n'est plus au sol après avoir sauté
         EventManager.TriggerEvent("OnJump");
-        animator.SetBool("isJumping", true);
     }
 
     // Vérifier si le joueur est au sol
     private void CheckGroundStatus()
     {
         // Raycast pour vérifier si le joueur touche le sol
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f, groundLayer);
-        if (isGrounded) animator.SetBool("isJumping", false);
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
     }
 
+    // Gérer les animations du joueur
+    private void HandleAnimations()
+    {
+        // if (!isGrounded)
+        // {
+        //     animator.SetBool("isJumping", true);
+        //     animator.SetBool("isWalking", false);
+        //     animator.SetBool("isSprinting", false);
+        // }
+        if (isSprinting)
+        {
+            animator.SetBool("isSprinting", true);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isJumping", false);
+        }
+        else if (moveInput.magnitude > 0)
+        {
+            animator.SetBool("isWalking", true);
+            animator.SetBool("isSprinting", false);
+            animator.SetBool("isJumping", false);
+        }
+        else
+        {
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isSprinting", false);
+            animator.SetBool("isJumping", false);
+        }
+    }
 
     // Fonction pour faire tourner le personnage vers la direction du mouvement
     private void RotateTowardsMovementDirection(Vector3 movementDirection)
     {
-        // Calculer la rotation cible en fonction de la direction du mouvement
-        Quaternion targetRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+        if (movementDirection != Vector3.zero)
+        {
+            // Calculer la rotation cible en fonction de la direction du mouvement
+            Quaternion targetRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
 
-        // Appliquer une rotation douce avec Slerp (interpolation sphérique)
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            // Ajouter un offset de rotation pour corriger l'orientation (ici, 45 degrés sur l'axe Y)
+            Quaternion offsetRotation = Quaternion.Euler(0, -45, 0); // Ajuste l'offset si nécessaire
+
+            // Appliquer la rotation avec l'offset
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation * offsetRotation, rotationSpeed * Time.deltaTime);
+        }
     }
+
 }
