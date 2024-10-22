@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 1688738839989051591}
   - component: {fileID: 5240425998124480689}
   - component: {fileID: 4806019374199299169}
+  - component: {fileID: 3989296389006982305}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -208,9 +209,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handPosition: {fileID: 1751271649242296974}
   initialObject: {fileID: 0}
-  pickUpRange: 3
+  pickUpRange: 0.1
   plantedRotation: {x: 0, y: 0, z: 0}
   plantHeightOffset: 0.1
+--- !u!95 &3989296389006982305
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3339975253994409025}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d3aa7fa3fc4062f4f914d88d99cf8088, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4158800016425173144
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +405,7 @@ Transform:
   m_GameObject: {fileID: 5416417331399833849}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0.22608502, y: -0.70454574, z: -0.08489445}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -475,7 +497,7 @@ Transform:
   m_GameObject: {fileID: 5692930424302675274}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0.3243729, y: -0.70454574, z: -0.18318224}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
