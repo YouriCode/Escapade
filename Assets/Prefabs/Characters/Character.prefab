@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 1688738839989051591}
   - component: {fileID: 5240425998124480689}
   - component: {fileID: 4806019374199299169}
-  - component: {fileID: 3989296389006982305}
+  - component: {fileID: 6136318140358250074}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -212,7 +212,7 @@ MonoBehaviour:
   pickUpRange: 0.1
   plantedRotation: {x: 0, y: 0, z: 0}
   plantHeightOffset: 0.1
---- !u!95 &3989296389006982305
+--- !u!95 &6136318140358250074
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
