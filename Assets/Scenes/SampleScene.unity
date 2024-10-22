@@ -784,7 +784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredItems:
   - Wood
-  - Wood
+  - Stone
 --- !u!65 &671535423
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1247,7 +1247,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 808254e8bdf8f4f45b99673ef7e9acd1, type: 2}
+  - {fileID: 2100000, guid: e28ccebbfaa5b444d966d7df07f03cf3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
