@@ -19,11 +19,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveInput;
     private Vector3 moveVelocity;
     private bool isSprinting = false;
-
+    private Animator animator;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         energyThreshold = EventManager.instance.GetEnergyThreshold();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
             EventManager.TriggerEvent("OnWalk");
 
         }
+        animator.SetBool("isSprinting", isSprinting);
 
         // Calculer la direction de mouvement par rapport à la caméra
         Vector3 cameraForward = cameraTransform.forward;  // Direction de la caméra
