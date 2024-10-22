@@ -784,7 +784,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   requiredItems:
   - Wood
-  - Stone
+  - Wood
 --- !u!65 &671535423
 BoxCollider:
   m_ObjectHideFlags: 0

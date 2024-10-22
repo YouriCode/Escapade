@@ -52,11 +52,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && moveInput.magnitude > .5f)
         {
             isSprinting = true;
+            animator.SetBool("isSprinting", true);
             EventManager.TriggerEvent("OnSprint");
         }
         else
         {
             isSprinting = false;
+            animator.SetBool("isSprinting", false);
             EventManager.TriggerEvent("OnWalk");
 
         }
@@ -89,8 +91,8 @@ public class PlayerController : MonoBehaviour
 
         // Vérifier si le joueur est au sol
         CheckGroundStatus();
-        animator.SetBool("isSprinting", isSprinting);
-        animator.SetBool("isJumping", !isGrounded);
+        //animator.SetBool("isSprinting", isSprinting);
+        //animator.SetBool("isJumping", !isGrounded);
     }
 
     void FixedUpdate()
@@ -104,6 +106,7 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         isGrounded = false;  // Le joueur n'est plus au sol après avoir sauté
         EventManager.TriggerEvent("OnJump");
+        animator.SetBool("isJumping", true);
     }
 
     // Vérifier si le joueur est au sol
@@ -111,6 +114,7 @@ public class PlayerController : MonoBehaviour
     {
         // Raycast pour vérifier si le joueur touche le sol
         isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f, groundLayer);
+        if (isGrounded) animator.SetBool("isJumping", false);
     }
 
 
