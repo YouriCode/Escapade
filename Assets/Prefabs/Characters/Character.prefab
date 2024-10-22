@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handPosition: {fileID: 1751271649242296974}
   initialObject: {fileID: 0}
-  pickUpRange: 3
+  pickUpRange: 0.1
   plantedRotation: {x: 0, y: 0, z: 0}
   plantHeightOffset: 0.1
 --- !u!95 &6136318140358250074
@@ -405,7 +405,7 @@ Transform:
   m_GameObject: {fileID: 5416417331399833849}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0.22608502, y: -0.70454574, z: -0.08489445}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -497,7 +497,7 @@ Transform:
   m_GameObject: {fileID: 5692930424302675274}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0.3243729, y: -0.70454574, z: -0.18318224}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []

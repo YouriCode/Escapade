@@ -1,36 +1,73 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class CraftingZone : MonoBehaviour
 {
-    // Liste des objets requis pour le craft
-    public List<string> requiredItems = new List<string>() { "Wood", "Stone" };
-    
-    // Liste des objets que le joueur a déposés
-    private List<string> depositedItems = new List<string>();
+    public List<string> requiredItems; // Liste des tags des objets requis pour le craft
+    private List<GameObject> itemsInZone = new List<GameObject>(); // Liste des objets dans la zone de craft
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        // Vérifie si l'objet est un objet de craft valide
+        // Vérifier si l'objet entrant est un objet requis
         if (requiredItems.Contains(other.gameObject.tag))
         {
-            depositedItems.Add(other.gameObject.tag);
-            Debug.Log("Item déposé: " + other.gameObject.tag);
-            Destroy(other.gameObject);  // Simule le dépôt de l'objet
+            // Ajouter l'objet à la liste des objets dans la zone
+            itemsInZone.Add(other.gameObject);
+            Debug.Log(other.gameObject.name + " ajouté à la zone de craft.");
 
-            // Vérifie si tous les objets requis sont déposés
-            CheckCrafting();
+            // Vérifier si tous les objets requis sont présents pour lancer le craft
+            CheckCraftingItems();
         }
     }
 
-    void CheckCrafting()
+    private void OnTriggerExit(Collider other)
     {
-        // Si tous les objets requis sont dans la liste
-        if (depositedItems.Contains("Wood") && depositedItems.Contains("Stone"))
+        // Retirer l'objet de la liste s'il quitte la zone
+        if (itemsInZone.Contains(other.gameObject))
         {
-            Debug.Log("Craft réussi ! Vous avez fabriqué une hache.");
-            // Ici, tu peux déclencher la fabrication de l'objet (par exemple, instancier une hache)
+            itemsInZone.Remove(other.gameObject);
+            Debug.Log(other.gameObject.name + " retiré de la zone de craft.");
+        }
+    }
+
+    private void CheckCraftingItems()
+    {
+        // Vérifier si tous les objets requis sont présents dans la zone
+        foreach (string requiredItem in requiredItems)
+        {
+            bool itemFound = false;
+            foreach (GameObject obj in itemsInZone)
+            {
+                if (obj.tag == requiredItem)
+                {
+                    itemFound = true;
+                    break;
+                }
+            }
+            if (!itemFound)
+            {
+                Debug.Log("Il manque des objets pour le craft.");
+                return;
+            }
+        }
+
+        // Si tous les objets sont présents, lancer le craft
+        Craft();
+    }
+
+    private void Craft()
+    {
+        // Lancer le craft ici (par exemple, créer une hache)
+        Debug.Log("Tous les objets sont présents ! Craft réussi !");
+
+        foreach (GameObject item in itemsInZone)
+        {
+            if (requiredItems.Contains(item.gameObject.tag))
+            {
+                Destroy(item);
+            }
         }
     }
 }

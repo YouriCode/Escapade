@@ -10,10 +10,10 @@ public class PlayerController : MonoBehaviour
     public float initialMoveSpeed = 5f;
     float sprintSpeed;
     public float sprintFactor = 1.5f;
-    public float jumpForce = 7f;   // Force de saut
-    public float rotationSpeed = 10f;  // Vitesse de rotation
-    public Transform cameraTransform;    // Référence à la caméra
-    public LayerMask groundLayer;        // Layer pour détecter le sol
+    public float jumpForce = 7f;            // Force de saut
+    public float rotationSpeed = 10f;       // Vitesse de rotation
+    public Transform cameraTransform;       // Référence à la caméra
+    public LayerMask groundLayer;           // Layer pour détecter le sol
     private bool isGrounded;
     private Rigidbody rb;
     private Vector3 moveInput;
@@ -60,7 +60,6 @@ public class PlayerController : MonoBehaviour
             EventManager.TriggerEvent("OnWalk");
 
         }
-        animator.SetBool("isSprinting", isSprinting);
 
         // Calculer la direction de mouvement par rapport à la caméra
         Vector3 cameraForward = cameraTransform.forward;  // Direction de la caméra
@@ -90,6 +89,8 @@ public class PlayerController : MonoBehaviour
 
         // Vérifier si le joueur est au sol
         CheckGroundStatus();
+        animator.SetBool("isSprinting", isSprinting);
+        animator.SetBool("isJumping", !isGrounded);
     }
 
     void FixedUpdate()

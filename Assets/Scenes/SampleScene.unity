@@ -133,7 +133,6 @@ GameObject:
   - component: {fileID: 80301356}
   - component: {fileID: 80301355}
   - component: {fileID: 80301354}
-  - component: {fileID: 80301353}
   m_Layer: 6
   m_Name: GrabObject (1)
   m_TagString: Wood
@@ -141,23 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &80301353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 80301352}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7311883c03540a54782fa4e226acf0eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handPosition: {fileID: 452145403}
-  initialObject: {fileID: 0}
-  pickUpRange: 1
-  plantedRotation: {x: 0, y: 0, z: 0}
-  plantHeightOffset: 0.1
 --- !u!54 &80301354
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -215,7 +197,7 @@ Transform:
   m_GameObject: {fileID: 80301352}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.35, y: 1.2770427, z: 13.42}
+  m_LocalPosition: {x: -9.34, y: 2.41, z: 8.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -238,7 +220,7 @@ PrefabInstance:
     - target: {fileID: 5845777784166563217, guid: 7ad12d2a45ea48a45a7edcd2fa69f723,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.3046379
+      value: 6.98
       objectReference: {fileID: 0}
     - target: {fileID: 5845777784166563217, guid: 7ad12d2a45ea48a45a7edcd2fa69f723,
         type: 3}
@@ -248,7 +230,7 @@ PrefabInstance:
     - target: {fileID: 5845777784166563217, guid: 7ad12d2a45ea48a45a7edcd2fa69f723,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.54
+      value: -3.76
       objectReference: {fileID: 0}
     - target: {fileID: 5845777784166563217, guid: 7ad12d2a45ea48a45a7edcd2fa69f723,
         type: 3}
@@ -596,7 +578,6 @@ GameObject:
   - component: {fileID: 583700485}
   - component: {fileID: 583700488}
   - component: {fileID: 583700487}
-  - component: {fileID: 583700486}
   m_Layer: 6
   m_Name: GrabObject
   m_TagString: Stone
@@ -613,30 +594,13 @@ Transform:
   m_GameObject: {fileID: 583700484}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.61, y: 0.47, z: 11.3}
+  m_LocalPosition: {x: -1.13, y: 0.71, z: 4.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 505334845}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &583700486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 583700484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7311883c03540a54782fa4e226acf0eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handPosition: {fileID: 452145403}
-  initialObject: {fileID: 0}
-  pickUpRange: 1
-  plantedRotation: {x: 0, y: 0, z: 0}
-  plantHeightOffset: 0.1
 --- !u!54 &583700487
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -708,6 +672,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 4806019374199299169, guid: e592e8bf774ee5c4c8ae77a04b7cf622,
+        type: 3}
+      propertyPath: pickUpRange
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5208008971823255900, guid: e592e8bf774ee5c4c8ae77a04b7cf622,
         type: 3}
       propertyPath: m_UseGravity
@@ -716,7 +685,7 @@ PrefabInstance:
     - target: {fileID: 5778361200860498914, guid: e592e8bf774ee5c4c8ae77a04b7cf622,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.68
+      value: -1.0046377
       objectReference: {fileID: 0}
     - target: {fileID: 5778361200860498914, guid: e592e8bf774ee5c4c8ae77a04b7cf622,
         type: 3}
@@ -726,7 +695,7 @@ PrefabInstance:
     - target: {fileID: 5778361200860498914, guid: e592e8bf774ee5c4c8ae77a04b7cf622,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.21
+      value: -1.87
       objectReference: {fileID: 0}
     - target: {fileID: 5778361200860498914, guid: e592e8bf774ee5c4c8ae77a04b7cf622,
         type: 3}
@@ -761,6 +730,21 @@ PrefabInstance:
     - target: {fileID: 5778361200860498914, guid: e592e8bf774ee5c4c8ae77a04b7cf622,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077830958604900522, guid: e592e8bf774ee5c4c8ae77a04b7cf622,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077830958604900522, guid: e592e8bf774ee5c4c8ae77a04b7cf622,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6077830958604900522, guid: e592e8bf774ee5c4c8ae77a04b7cf622,
+        type: 3}
+      propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -831,7 +815,7 @@ Transform:
   m_GameObject: {fileID: 671535421}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.40210757, z: 0, w: 0.91559243}
-  m_LocalPosition: {x: -7.232, y: 0.289, z: 16.457}
+  m_LocalPosition: {x: -1.41, y: 0.289, z: 7.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -955,6 +939,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: canoe_paddle
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3a32589153ef1294094d2ccff1693ccd,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1210,7 +1199,7 @@ Transform:
   m_GameObject: {fileID: 1546310052}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.034, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.099999994, y: 0.1, z: 0.099999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1258,7 +1247,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 808254e8bdf8f4f45b99673ef7e9acd1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

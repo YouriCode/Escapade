@@ -42,16 +42,19 @@ public class PickUpDrop : MonoBehaviour
     {
         // Chercher les objets autour du personnage
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, pickUpRange);
+
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.gameObject.layer == LayerMask.NameToLayer("GrabObjects"))
             {
-                PickUpObject(hitCollider.gameObject);
-                break;
+                {
+                    PickUpObject(hitCollider.gameObject);
+                    break;
+                }
             }
         }
     }
-    
+
     void PickUpObject(GameObject obj)
     {
         // Désactiver la physique pour ramasser l'objet
@@ -75,17 +78,13 @@ public class PickUpDrop : MonoBehaviour
         // Détacher l'objet de la main
         carriedObject.transform.parent = null;
 
-        // Positionner l'objet au sol avec une orientation verticale
-        // Vector3 plantPosition = new Vector3(handPosition.position.x, 0 + plantHeightOffset, handPosition.position.z);
-        // carriedObject.transform.position = plantPosition;
-        // carriedObject.transform.eulerAngles = plantedRotation;
-
         // Rendre l'objet immobile mais laisser les collisions actives
         Rigidbody rb = carriedObject.GetComponent<Rigidbody>();
         if (rb != null)
         {
             rb.isKinematic = false;
             rb.detectCollisions = true;  // Garder les collisions actives pour pouvoir le reprendre
+            rb.useGravity = true;
         }
 
         // Laisser le collider actif pour bloquer le personnage
