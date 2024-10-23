@@ -20,7 +20,7 @@ public class EnergyManager : MonoBehaviour
         EventManager.StartListening("OnSprint", StartSprint);
         EventManager.StartListening("OnWalk", StopSprint);
         EventManager.StartListening("OnJump", OnJump);
-        // EventManager.StartListening("OnEat", RegainEnergy);
+        EventManager.StartListening("OnEat", RegainEnergy);
 
         //InvokeRepeating("LogMessage", 1f, 1f);
     }
@@ -72,7 +72,10 @@ public class EnergyManager : MonoBehaviour
         currentEnergy -= 1f;
     }
 
-    //void RegainEnergy() {}
+    void RegainEnergy() {
+        currentEnergy += 100;
+        Debug.Log("fruit mangé " + currentEnergy);
+    }
 
     void LogMessage()
     {
