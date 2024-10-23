@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4761392368401764250}
   m_Layer: 0
   m_Name: leg-right
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 5671751068399109427}
   m_Layer: 0
   m_Name: arm-right
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 5145033192349453565}
   m_Layer: 0
   m_Name: root
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,9 +110,10 @@ GameObject:
   - component: {fileID: 5240425998124480689}
   - component: {fileID: 4806019374199299169}
   - component: {fileID: 6136318140358250074}
+  - component: {fileID: 2438285505680131241}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -174,13 +175,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialMoveSpeed: 2
   sprintFactor: 1.5
-  jumpForce: 7
+  jumpForce: 4
   rotationSpeed: 10
   cameraTransform: {fileID: 0}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
-  rotationOffset: -45
+    m_Bits: 1
 --- !u!114 &5240425998124480689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,9 +193,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5dee73037a2528488083ef2f799fe6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxEnergy: 100
+  maxEnergy: 1000
   energyDepletionRate: 1
-  energyDepletionFactor: 5
+  energyDepletionFactor: 2
 --- !u!114 &4806019374199299169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handPosition: {fileID: 1751271649242296974}
   initialObject: {fileID: 0}
-  pickUpRange: 0.1
+  pickUpRange: 1
   plantedRotation: {x: 0, y: 0, z: 0}
   plantHeightOffset: 0.1
 --- !u!95 &6136318140358250074
@@ -234,6 +234,27 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!65 &2438285505680131241
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3339975253994409025}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.3850422, y: 0.6602651, z: 0.25172806}
+  m_Center: {x: -0.0058050156, y: 0.33529705, z: -0.012548447}
 --- !u!1 &4158800016425173144
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +267,7 @@ GameObject:
   - component: {fileID: 497396205178367659}
   m_Layer: 0
   m_Name: collider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,7 +304,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 0.36812046, y: 0.66365266, z: 0.24456161}
   m_Center: {x: -0.03168671, y: 0.3165753, z: 0.005095035}
@@ -298,7 +319,7 @@ GameObject:
   - component: {fileID: 9111555142966179511}
   m_Layer: 0
   m_Name: leg-left
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -329,7 +350,7 @@ GameObject:
   - component: {fileID: 5343696911213806316}
   m_Layer: 0
   m_Name: head
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -360,7 +381,7 @@ GameObject:
   - component: {fileID: 1751271649242296974}
   m_Layer: 0
   m_Name: handposition
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -373,12 +394,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5187275146165646907}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.38268343, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: -0.293, y: 0.279, z: -0.163}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.202, y: 0.014, z: 0.109173834}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 803998261616671067}
+  m_Father: {fileID: 3714408352692078248}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5416417331399833849
 GameObject:
@@ -392,7 +413,7 @@ GameObject:
   - component: {fileID: 5236957038243286450}
   m_Layer: 0
   m_Name: body-mesh
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -484,7 +505,7 @@ GameObject:
   - component: {fileID: 6417805520648234755}
   m_Layer: 0
   m_Name: head-mesh
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -575,7 +596,7 @@ GameObject:
   - component: {fileID: 3714408352692078248}
   m_Layer: 0
   m_Name: arm-left
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -592,7 +613,8 @@ Transform:
   m_LocalPosition: {x: -0.09989677, y: 0.1115, z: 0.011499999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1751271649242296974}
   m_Father: {fileID: 877146960441374083}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6983447958194843906
@@ -606,7 +628,7 @@ GameObject:
   - component: {fileID: 803998261616671067}
   m_Layer: 0
   m_Name: scaler
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -627,7 +649,6 @@ Transform:
   - {fileID: 4679795076506688760}
   - {fileID: 6077830958604900522}
   - {fileID: 5145033192349453565}
-  - {fileID: 1751271649242296974}
   - {fileID: 7900307174454027175}
   m_Father: {fileID: 5778361200860498914}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -642,7 +663,7 @@ GameObject:
   - component: {fileID: 877146960441374083}
   m_Layer: 0
   m_Name: torso
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -179,6 +179,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2886089666048363966}
+  - component: {fileID: 3297694214899362665}
+  - component: {fileID: -1502687750640792408}
   m_Layer: 0
   m_Name: Tree_palmShort
   m_TagString: Untagged
@@ -202,3 +204,44 @@ Transform:
   - {fileID: 8863249004514587482}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3297694214899362665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5639257367496375730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7954f6169bd4c6e4f929cca05613a67a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  branchPrefab: {fileID: 6336899376554112632, guid: f992dab9dc2c9034bab928499771eb17,
+    type: 3}
+  logPrefab: {fileID: 7436349527600205629, guid: d729cb9fa7c73d342811878c3daee4a7,
+    type: 3}
+  cutTreePrefab: {fileID: 66208234981270826, guid: a71a9e47cf93bae4c86f33296520c937,
+    type: 3}
+  dropRadius: 2
+  hitsToCutDown: 3
+--- !u!65 &-1502687750640792408
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5639257367496375730}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5, y: 3, z: 2.5}
+  m_Center: {x: 0.058746576, y: 1.29573, z: 0.06213522}
