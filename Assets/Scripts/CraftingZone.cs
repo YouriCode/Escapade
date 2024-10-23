@@ -82,37 +82,57 @@ public class CraftingZone : MonoBehaviour
 
     public float craftPositionOffsetY = 2f;
     private void Craft()
+{
+    Debug.Log("Tous les objets sont présents ! Craft réussi !");
+
+    foreach (var requirement in requiredItems)
     {
-        Debug.Log("Tous les objets sont présents ! Craft réussi !");
-
-        foreach (var requirement in requiredItems)
+        // Vérifier si des objets requis sont dans la zone de craft
+        if (itemsInZone.ContainsKey(requirement.itemTag))
         {
-            // Détruire les objets requis
-            if (itemsInZone.ContainsKey(requirement.itemTag))
+            int amountToDestroy = Mathf.Min(itemsInZone[requirement.itemTag], requirement.requiredAmount);
+
+            // Trouver les objets dans la zone de craft ayant le tag requis
+            GameObject[] objectsInZone = GameObject.FindGameObjectsWithTag(requirement.itemTag);
+            Debug.Log($"Essai de détruire {amountToDestroy} de {requirement.itemTag}. Objets trouvés : {objectsInZone.Length}");
+
+            int destroyedCount = 0;
+            foreach (var obj in objectsInZone)
             {
-                int amountToDestroy = Mathf.Min(itemsInZone[requirement.itemTag], requirement.requiredAmount);
-
-                // Trouver et détruire les objets dans la scène
-                GameObject[] objectsToDestroy = GameObject.FindGameObjectsWithTag(requirement.itemTag);
-                Debug.Log($"Essai de détruire {amountToDestroy} de {requirement.itemTag}. Objets trouvés : {objectsToDestroy.Length}");
-
-                for (int i = 0; i < amountToDestroy + 1 && i < objectsToDestroy.Length; i++)
+                Collider objCollider = obj.GetComponent<Collider>();
+                if (objCollider != null)
                 {
-                    Destroy(objectsToDestroy[i]);
-                    Debug.Log($"{objectsToDestroy[i].name} détruit.");
+                    // Vérifier si l'objet est dans la zone de craft
+                    if (objCollider.bounds.Intersects(GetComponent<Collider>().bounds))
+                    {
+                        Destroy(obj);
+                        destroyedCount++;
+                        Debug.Log($"{obj.name} détruit.");
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning($"{obj.name} n'a pas de collider, il ne peut pas être détruit.");
                 }
 
-                // Mettre à jour le nombre d'objets dans la zone
-                itemsInZone[requirement.itemTag] -= amountToDestroy;
-                if (itemsInZone[requirement.itemTag] <= 0)
-                {
-                    itemsInZone.Remove(requirement.itemTag);
-                }
+                // Arrêter si on a détruit le nombre requis d'objets
+                if (destroyedCount >= amountToDestroy)
+                    break;
+            }
+
+            // Mettre à jour le nombre d'objets dans la zone
+            itemsInZone[requirement.itemTag] -= destroyedCount;
+            if (itemsInZone[requirement.itemTag] <= 0)
+            {
+                itemsInZone.Remove(requirement.itemTag);
             }
         }
-
-        Vector3 craftPosition = new Vector3(transform.position.x, transform.position.y + craftPositionOffsetY, transform.position.z);
-        Instantiate(craftResult, craftPosition, Quaternion.identity);
     }
+
+    Vector3 craftPosition = new Vector3(transform.position.x, transform.position.y + craftPositionOffsetY, transform.position.z);
+    Instantiate(craftResult, craftPosition, Quaternion.identity);
+}
+
+
 
 }
