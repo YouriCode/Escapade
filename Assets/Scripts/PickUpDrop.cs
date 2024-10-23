@@ -43,15 +43,28 @@ public class PickUpDrop : MonoBehaviour
         // Chercher les objets autour du personnage
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, pickUpRange);
 
+        GameObject closestObject = null;  // Pour stocker l'objet le plus proche
+        float closestDistance = pickUpRange;  // Initialiser avec la portée de ramassage
+
         foreach (var hitCollider in hitColliders)
         {
             if (hitCollider.gameObject.layer == LayerMask.NameToLayer("GrabObjects"))
             {
+                float distance = Vector3.Distance(transform.position, hitCollider.transform.position);
+
+                // Vérifier si cet objet est le plus proche
+                if (distance < closestDistance)
                 {
-                    PickUpObject(hitCollider.gameObject);
-                    break;
+                    closestDistance = distance;  // Mettre à jour la distance la plus proche
+                    closestObject = hitCollider.gameObject;  // Mettre à jour l'objet le plus proche
                 }
             }
+        }
+
+        // Si un objet le plus proche a été trouvé, le ramasser
+        if (closestObject != null)
+        {
+            PickUpObject(closestObject);
         }
     }
 
@@ -95,5 +108,10 @@ public class PickUpDrop : MonoBehaviour
         }
 
         carriedObject = null;  // Réinitialiser la référence
+    }
+
+    public GameObject GetCarriedObject()
+    {
+        return carriedObject;
     }
 }

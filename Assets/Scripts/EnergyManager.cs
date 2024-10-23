@@ -53,7 +53,7 @@ public class EnergyManager : MonoBehaviour
             EventManager.instance.GameOver();
         }
 
-        currentEnergy = Mathf.Clamp(currentEnergy, 0f, 100f);
+        currentEnergy = Mathf.Clamp(currentEnergy, 0f, maxEnergy);
         EventManager.instance.UpdateEnergy(currentEnergy, maxEnergy);
     }
 
