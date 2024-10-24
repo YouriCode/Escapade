@@ -175,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialMoveSpeed: 2
   sprintFactor: 1.5
-  jumpForce: 4
+  jumpForce: 5
   rotationSpeed: 10
   cameraTransform: {fileID: 0}
   groundLayer:
