@@ -19,38 +19,48 @@ public class TreeInteraction : MonoBehaviour
         playerPickUpDrop = FindObjectOfType<PickUpDrop>();
     }
 
+    float interactionCooldown = 0.5f; // Délai entre les interactions
+    private float lastInteractionTime = 0f;  // Temps de la dernière interaction
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Player") && Input.GetKeyDown(KeyCode.F))
+        if (other.CompareTag("Player") && Time.time >= lastInteractionTime + interactionCooldown) // Vérifier le délai
         {
-            if (playerPickUpDrop != null && playerPickUpDrop.GetCarriedObject() != null &&
-                playerPickUpDrop.GetCarriedObject().CompareTag("Axe")) // Si le joueur porte une hache
+            if (Input.GetKey(KeyCode.F))
             {
-                // Incrémenter le compteur de coups
-                hitCount++;
+                lastInteractionTime = Time.time; // Mettre à jour le temps de la dernière interaction
 
-                // Si l'arbre a reçu assez de coups, faire apparaître l'arbre coupé
-                if (hitCount >= hitsToCutDown)
+                if (playerPickUpDrop != null && playerPickUpDrop.GetCarriedObject() != null &&
+                    playerPickUpDrop.GetCarriedObject().CompareTag("Axe")) // Si le joueur porte une hache
                 {
-                    // Faire apparaître l'arbre coupé à la place de l'arbre actuel
-                    Instantiate(cutTreePrefab, transform.position, transform.rotation);
+                    // Incrémenter le compteur de coups
+                    hitCount++;
 
-                    // Détruire cet arbre
-                    Destroy(gameObject);
+                    // Si l'arbre a reçu assez de coups, faire apparaître l'arbre coupé
+                    if (hitCount >= hitsToCutDown)
+                    {
+                        // Faire apparaître l'arbre coupé à la place de l'arbre actuel
+                        Instantiate(cutTreePrefab, transform.position, transform.rotation);
+
+                        // Détruire cet arbre
+                        Destroy(gameObject);
+                    }
+                    else
+                    {
+                        // Faire tomber des bûches
+                        DropItems(logPrefab, Random.Range(1, 3));
+                    }
                 }
                 else
                 {
-                    // Faire tomber des bûches
-                    DropItems(logPrefab, Random.Range(1, 3));
+                    // Faire tomber des branches si le joueur ne porte pas de hache
+                    DropItems(branchPrefab, Random.Range(1, 3));
                 }
-            }
-            else
-            {
-                // Faire tomber des branches si le joueur ne porte pas de hache
-                DropItems(branchPrefab, Random.Range(1, 3));
             }
         }
     }
+
+
 
     // Fonction pour instancier des objets avec une position aléatoire proche de l'arbre
     private void DropItems(GameObject itemPrefab, int count)
