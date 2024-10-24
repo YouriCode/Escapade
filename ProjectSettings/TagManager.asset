@@ -8,6 +8,7 @@ TagManager:
   - Wood
   - Axe
   - Log
+  - Food
   layers:
   - Default
   - TransparentFX

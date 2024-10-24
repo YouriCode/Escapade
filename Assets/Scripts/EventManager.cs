@@ -88,12 +88,6 @@ public class EventManager : MonoBehaviour
         return maxEnergy;
     }
 
-    public float energyThreshold = 50f;
-    public float GetEnergyThreshold()
-    {
-        return energyThreshold;
-    }
-
     public GameObject character;
     public void GameOver()
     {

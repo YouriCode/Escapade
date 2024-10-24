@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        energyThreshold = EventManager.instance.GetEnergyThreshold();
+        energyThreshold = EventManager.instance.GetMaxEnergy() / 2;
         animator = GetComponent<Animator>();
     }
 
