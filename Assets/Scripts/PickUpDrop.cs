@@ -80,7 +80,7 @@ public class PickUpDrop : MonoBehaviour
 
         // Positionner et attacher l'objet à la main
         obj.transform.position = handPosition.position;
-        //obj.transform.rotation = handPosition.rotation;
+        obj.transform.rotation = handPosition.rotation;
         obj.transform.parent = handPosition;
 
         carriedObject = obj;
