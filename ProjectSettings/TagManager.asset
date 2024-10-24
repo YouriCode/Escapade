@@ -10,6 +10,8 @@ TagManager:
   - Log
   - Food
   - Bamboo
+  - Fabric
+  - Rope
   layers:
   - Default
   - TransparentFX
