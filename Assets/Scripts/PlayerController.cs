@@ -108,10 +108,12 @@ public class PlayerController : MonoBehaviour
     }
 
     // Vérifier si le joueur est au sol
+    public Transform groundCheck;  // Référence à l'objet GroundCheck
+    public float groundDistance = 0.2f;  // Distance pour détecter le sol
+
     private void CheckGroundStatus()
     {
-        // Raycast pour vérifier si le joueur touche le sol
-        isGrounded = Physics.Raycast(transform.position, Vector3.down, 1.1f);
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundLayer);
     }
 
     // Gérer les animations du joueur

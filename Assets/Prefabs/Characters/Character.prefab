@@ -180,7 +180,9 @@ MonoBehaviour:
   cameraTransform: {fileID: 0}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8
+  groundCheck: {fileID: 5145033192349453565}
+  groundDistance: 0.2
 --- !u!114 &5240425998124480689
 MonoBehaviour:
   m_ObjectHideFlags: 0

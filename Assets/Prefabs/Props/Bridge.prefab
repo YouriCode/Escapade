@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4436197506263963082}
   - component: {fileID: 6989805608558239778}
   - component: {fileID: 7124115084427989368}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,6 +199,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bridge_side_woodRound (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de6e160b2f8435142909ca91b22dfef8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -287,6 +292,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: bridge_side_woodRound
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de6e160b2f8435142909ca91b22dfef8,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
