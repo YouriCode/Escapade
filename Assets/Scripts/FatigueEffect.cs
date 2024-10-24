@@ -36,7 +36,7 @@ public class FatigueEffect : MonoBehaviour
     {
         // Récupérer l'énergie actuelle depuis l'EventManager
         float currentEnergy = EventManager.instance.GetCurrentEnergy();
-        float energyThreshold = EventManager.instance.GetEnergyThreshold();
+        float energyThreshold = EventManager.instance.GetMaxEnergy() / 2f;
 
         if (currentEnergy < energyThreshold)
         {
