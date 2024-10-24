@@ -304,7 +304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eddf172f5aac85a43b2a7dd491b71b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  energyThreshold: 50
   character: {fileID: 0}
 --- !u!4 &1058146071
 Transform:
@@ -452,6 +451,11 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 670042938}
+    - target: {fileID: 1751271649242296974, guid: e592e8bf774ee5c4c8ae77a04b7cf622,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.014
+      objectReference: {fileID: 0}
     - target: {fileID: 3339975253994409025, guid: e592e8bf774ee5c4c8ae77a04b7cf622,
         type: 3}
       propertyPath: m_Name
