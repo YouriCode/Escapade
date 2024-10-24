@@ -79,8 +79,9 @@ public class CraftingZone : MonoBehaviour
         // Si tous les objets sont présents, lancer le craft
         Craft();
     }
-
+    public float craftPositionOffsetX = 2f;
     public float craftPositionOffsetY = 2f;
+    public float craftPositionOffsetZ = 2f;
     private void Craft()
 {
     Debug.Log("Tous les objets sont présents ! Craft réussi !");
@@ -129,7 +130,7 @@ public class CraftingZone : MonoBehaviour
         }
     }
 
-    Vector3 craftPosition = new Vector3(transform.position.x, transform.position.y + craftPositionOffsetY, transform.position.z);
+    Vector3 craftPosition = new Vector3(transform.position.x + craftPositionOffsetX, transform.position.y + craftPositionOffsetY, transform.position.z + craftPositionOffsetZ);
     Instantiate(craftResult, craftPosition, Quaternion.identity);
 }
 

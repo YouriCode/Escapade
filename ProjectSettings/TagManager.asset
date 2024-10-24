@@ -9,6 +9,7 @@ TagManager:
   - Axe
   - Log
   - Food
+  - Bamboo
   layers:
   - Default
   - TransparentFX
