@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8244220997988934360}
   - component: {fileID: 4787201953500616276}
   - component: {fileID: 1909159659758675885}
-  - component: {fileID: 6182594695265736325}
   m_Layer: 0
   m_Name: CraftingZone
   m_TagString: Untagged
@@ -73,23 +72,12 @@ MonoBehaviour:
   - itemTag: Wood
     requiredAmount: 4
   craftResult: {fileID: 0}
+  craftPositionOffsetX: 1
   craftPositionOffsetY: 1
---- !u!114 &6182594695265736325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3175466047170486899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  outlineMode: 2
-  precomputeOutline: 0
-  bakeKeys: []
-  bakeValues: []
+  craftPositionOffsetZ: 1
+  craftRotationX: 0
+  craftRotationY: 0
+  craftRotationZ: 0
 --- !u!1 &3891890039853947581
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +90,7 @@ GameObject:
   - component: {fileID: 8335713287066435115}
   - component: {fileID: 8102374616413487760}
   - component: {fileID: 1180428402145961249}
+  - component: {fileID: 5343084988181887251}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -196,6 +185,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &5343084988181887251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3891890039853947581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1001 &4180883873746984849
 PrefabInstance:
   m_ObjectHideFlags: 0
