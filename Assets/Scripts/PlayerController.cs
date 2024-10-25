@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         maxEnergy = EventManager.instance.GetMaxEnergy();
-        energyThreshold = maxEnergy / 2;
+        energyThreshold = maxEnergy / 3;
         animator = GetComponent<Animator>();
     }
 
@@ -46,11 +46,11 @@ public class PlayerController : MonoBehaviour
         moveSpeed = initialMoveSpeed;
         if (currentEnergy < energyThreshold)
         {
-            moveSpeed = initialMoveSpeed / 2f;
+            moveSpeed = initialMoveSpeed / 1.5f;
         }
         else if (currentEnergy < energyThreshold / 2)
         {
-            moveSpeed = initialMoveSpeed / 4f;
+            moveSpeed = initialMoveSpeed / 3f;
         }
         sprintSpeed = moveSpeed * speedFactor;
 
