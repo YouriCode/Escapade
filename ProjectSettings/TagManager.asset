@@ -12,6 +12,7 @@ TagManager:
   - Bamboo
   - Fabric
   - Rope
+  - Knife
   layers:
   - Default
   - TransparentFX

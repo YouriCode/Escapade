@@ -141,7 +141,7 @@ public class Outline : MonoBehaviour
         break;
 
       case Mode.InteractObject:
-        detectionRange = 2f;
+        detectionRange = 7f;
         blinks = true;
         blinkSpeed = 5f;
         r = 1;
