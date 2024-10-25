@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6908396804501743544}
   - component: {fileID: 8402599753585160072}
   m_Layer: 0
-  m_Name: Raft
+  m_Name: raft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,8 +53,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.4776638, y: 0.09674323, z: 2.8062441}
-  m_Center: {x: -0.017356277, y: 0.03367925, z: -0.12687552}
+  m_Size: {x: 1.4776638, y: 1.1672144, z: 2.8062441}
+  m_Center: {x: -0.017356277, y: -0.5015564, z: -0.12687552}
 --- !u!54 &8402599753585160072
 Rigidbody:
   m_ObjectHideFlags: 0
