@@ -106,8 +106,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5778361200860498914}
   - component: {fileID: 5208008971823255900}
-  - component: {fileID: 1688738839989051591}
   - component: {fileID: 5240425998124480689}
+  - component: {fileID: 1688738839989051591}
   - component: {fileID: 4806019374199299169}
   - component: {fileID: 6136318140358250074}
   - component: {fileID: 2438285505680131241}
@@ -161,6 +161,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &5240425998124480689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3339975253994409025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5dee73037a2528488083ef2f799fe6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxEnergy: 500
+  energyDepletionRate: 1
+  energyDepletionFactor: 2
 --- !u!114 &1688738839989051591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,21 +198,6 @@ MonoBehaviour:
     m_Bits: 8
   groundCheck: {fileID: 5145033192349453565}
   groundDistance: 0.2
---- !u!114 &5240425998124480689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3339975253994409025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5dee73037a2528488083ef2f799fe6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxEnergy: 500
-  energyDepletionRate: 1
-  energyDepletionFactor: 2
 --- !u!114 &4806019374199299169
 MonoBehaviour:
   m_ObjectHideFlags: 0

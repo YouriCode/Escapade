@@ -23,6 +23,7 @@ public class Outline : MonoBehaviour
     GrabObject,
     InteractObject,
     CraftingZone,
+    Note
   }
 
   public Mode OutlineMode
@@ -157,6 +158,16 @@ public class Outline : MonoBehaviour
         g = 0;
         b = 0;
         break;
+
+      case Mode.Note:
+        detectionRange = 10f;
+        blinks = true;
+        blinkSpeed = 5f;
+        r = 1;
+        g = .5f;
+        b = 0;
+        break;
+
     }
   }
 
@@ -179,7 +190,8 @@ public class Outline : MonoBehaviour
     {
       alpha = Mathf.PingPong(Time.time * blinkSpeed, 1f);
     }
-    else {
+    else
+    {
       alpha = 0f;
     }
     if (!blinks) alpha = 1f;

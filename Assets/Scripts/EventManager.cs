@@ -28,6 +28,8 @@ public class EventManager : MonoBehaviour
             return eventManager;
         }
     }
+    private float currentEnergy;
+    private float maxEnergy;
 
     void Init()
     {
@@ -71,8 +73,6 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    private float currentEnergy;
-    private float maxEnergy;
     public void UpdateEnergy(float energy, float max)
     {
         currentEnergy = energy;
@@ -94,5 +94,6 @@ public class EventManager : MonoBehaviour
         Debug.Log("Game Over");
         character.GetComponent<PlayerController>().enabled = false;
         character.GetComponent<PickUpDrop>().enabled = false;
+        character.GetComponent<Animator>().enabled = false;
     }
 }
