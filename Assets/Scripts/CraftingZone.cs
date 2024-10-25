@@ -14,6 +14,7 @@ public class CraftingZone : MonoBehaviour
     public List<CraftingRequirement> requiredItems; // Liste des objets requis pour le craft
     private Dictionary<string, int> itemsInZone = new Dictionary<string, int>(); // Dictionnaire des objets dans la zone de craft
     public GameObject craftResult;
+    public bool finalCraftingZone = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -136,6 +137,10 @@ public class CraftingZone : MonoBehaviour
         Vector3 craftPosition = new Vector3(transform.position.x + craftPositionOffsetX, transform.position.y + craftPositionOffsetY, transform.position.z + craftPositionOffsetZ);
         Quaternion craftRotation = Quaternion.Euler(craftRotationX, craftRotationY, craftRotationZ);
         Instantiate(craftResult, craftPosition, craftRotation);
+
+        if (finalCraftingZone) {
+            EventManager.instance.Victory();
+        }
     }
 
 

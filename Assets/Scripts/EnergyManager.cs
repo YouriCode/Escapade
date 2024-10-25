@@ -39,7 +39,7 @@ public class EnergyManager : MonoBehaviour
 
     void Update()
     {
-        if (currentEnergy > 0)
+        if (EventManager.instance.GetCurrentEnergy() > 0)
         {
             currentEnergy -= energyDepletionRate * Time.deltaTime;
 
@@ -84,7 +84,7 @@ public class EnergyManager : MonoBehaviour
     void RegainEnergy()
     {
         currentEnergy += 150f;
-        Debug.Log("fruit mangé " + currentEnergy);
+        Debug.Log("fruit mangé " + currentEnergy);  
     }
 
     void LogMessage()

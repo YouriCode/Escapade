@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class EventManager : MonoBehaviour
 {
@@ -78,7 +79,6 @@ public class EventManager : MonoBehaviour
     {
         currentEnergy = energy;
         maxEnergy = max;
-        Debug.Log(currentEnergy);
     }
 
     public float GetCurrentEnergy()
@@ -100,11 +100,39 @@ public class EventManager : MonoBehaviour
     }
 
     public GameObject character;
+    public Canvas victoryCanvas; 
+    public Canvas defeatCanvas; 
     public void GameOver()
     {
         Debug.Log("Game Over");
         character.GetComponent<PlayerController>().enabled = false;
         character.GetComponent<PickUpDrop>().enabled = false;
         character.GetComponent<Animator>().enabled = false;
+        
+        StartCoroutine(ShowDefeatCanvas());
+    }
+
+    private IEnumerator ShowDefeatCanvas()
+    {
+        yield return new WaitForSeconds(1);
+        defeatCanvas.enabled = true;
+    }
+
+    public void Victory() {
+        Debug.Log("Gagné");
+        character.GetComponent<PlayerController>().enabled = false;
+        character.GetComponent<PickUpDrop>().enabled = false;
+        character.GetComponent<Animator>().enabled = false;
+        StartCoroutine(ShowVictoryCanvas());
+    }
+
+    private IEnumerator ShowVictoryCanvas()
+    {
+        yield return new WaitForSeconds(1);
+        victoryCanvas.enabled = true;
+    }
+
+    public void Menu() {
+        SceneManager.LoadScene("LevelDesign");
     }
 }
