@@ -2048,6 +2048,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6622451667268286076}
+  - {fileID: 3843482769912068883}
   m_Father: {fileID: 3388548034515507002}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &4154279873272393749
@@ -2085,6 +2086,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fabricPrefab: {fileID: 6764304373251152477, guid: c3bf32afdf9ae684eb1b8c4871e3284b,
     type: 3}
+  spawnPoint: {fileID: 3843482769912068883}
+--- !u!1 &6205443828841591034
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3843482769912068883}
+  m_Layer: 0
+  m_Name: loot point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3843482769912068883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6205443828841591034}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.715, y: 3.691, z: -6.322}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2416636020928489449}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6420923340461154504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2309,6 +2342,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3257089629189868294}
+  - {fileID: 1458130134013401846}
   m_Father: {fileID: 3388548034515507002}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3633360872144738678
@@ -2346,6 +2380,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fabricPrefab: {fileID: 6764304373251152477, guid: c3bf32afdf9ae684eb1b8c4871e3284b,
     type: 3}
+  spawnPoint: {fileID: 1458130134013401846}
 --- !u!1 &6953351991842875215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2949,6 +2984,37 @@ Transform:
   - {fileID: 5040065497361742582}
   - {fileID: 8361925664255265892}
   m_Father: {fileID: 2878440189291058951}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &9195150196065648546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1458130134013401846}
+  m_Layer: 0
+  m_Name: loot point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1458130134013401846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9195150196065648546}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.041, y: 0.71, z: 0.442}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1122313319470216505}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9196226329360669005
 GameObject:
