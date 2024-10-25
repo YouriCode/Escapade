@@ -5,15 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class StateMenu : MonoBehaviour
 {
-   public void OnClickQuit()
+    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject fondu;
+    public StateMachine state;
+
+    public void OnClickQuit()
     {
+#if UNITY_EDITOR
+        // Si nous sommes dans l'éditeur, quitter simplement le mode Play
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        // Si nous sommes dans une build, fermer l'application
         Application.Quit();
+#endif
     }
 
     public void OnClickPlay()
     {
-
-        SceneManager.LoadScene("Escapade");
+        animator.SetTrigger("FadeOut");
+        fondu.SetActive(true);
+    }
+    public void OnClickCredits()
+    {
+        state.SetState(State.CREDITS);
     }
 
+
+    public void OnFadeComplete()
+    {
+        SceneManager.LoadScene("Escapade");
+    }
 }
