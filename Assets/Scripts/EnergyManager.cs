@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class EnergyManager : MonoBehaviour
     void OnEnable()
     {
         currentEnergy = maxEnergy;
+        EventManager.instance.UpdateEnergy(currentEnergy, maxEnergy);
 
         EventManager.StartListening("OnSprint", StartSprint);
         EventManager.StartListening("OnWalk", StopSprint);
