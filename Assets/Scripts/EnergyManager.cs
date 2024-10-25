@@ -13,6 +13,8 @@ public class EnergyManager : MonoBehaviour
     public float energyDepletionFactor = 2f;
 
     private bool isSprinting = false;
+    private bool isInWater = false;
+
 
     void OnEnable()
     {
@@ -49,14 +51,19 @@ public class EnergyManager : MonoBehaviour
             {
                 currentEnergy -= energyDepletionRate * Time.deltaTime;
             }
+
         }
         else
         {
             EventManager.instance.GameOver();
         }
-
         currentEnergy = Mathf.Clamp(currentEnergy, 0f, maxEnergy);
-        EventManager.instance.UpdateEnergy(currentEnergy, maxEnergy);
+
+        isInWater = EventManager.instance.WaterState();
+        if (!isInWater)
+        {
+            EventManager.instance.UpdateEnergy(currentEnergy, maxEnergy);
+        }
     }
 
     void StartSprint()
@@ -74,7 +81,8 @@ public class EnergyManager : MonoBehaviour
         currentEnergy -= 1f;
     }
 
-    void RegainEnergy() {
+    void RegainEnergy()
+    {
         currentEnergy += 100f;
         Debug.Log("fruit mangé " + currentEnergy);
     }

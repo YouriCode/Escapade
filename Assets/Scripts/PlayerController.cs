@@ -6,10 +6,10 @@ public class PlayerController : MonoBehaviour
 {
     float currentEnergy;
     float energyThreshold;
-    float moveSpeed = 5f;
+    public float moveSpeed = 5f;
     public float initialMoveSpeed = 5f;
     float sprintSpeed;
-    public float sprintFactor = 1.5f;
+    public float speedFactor = 1.5f;
     public float jumpForce = 7f;            // Force de saut
     public float rotationSpeed = 10f;       // Vitesse de rotation
     public Transform cameraTransform;       // Référence à la caméra
@@ -20,11 +20,16 @@ public class PlayerController : MonoBehaviour
     private Vector3 moveVelocity;
     private bool isSprinting = false;
     private Animator animator;
+    private float fallStartY; // Position Y au début de la chute
+    public float maxFallHeight = 10f; // Hauteur de chute maximale avant de subir des dégâts
+    public float fallDamageMultiplier = 2f; // Multiplicateur de dégâts en fonction de la hauteur de chute
+    private float maxEnergy;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        energyThreshold = EventManager.instance.GetMaxEnergy() / 2;
+        maxEnergy = EventManager.instance.GetMaxEnergy();
+        energyThreshold = maxEnergy / 2;
         animator = GetComponent<Animator>();
     }
 
@@ -47,7 +52,7 @@ public class PlayerController : MonoBehaviour
         {
             moveSpeed = initialMoveSpeed / 4f;
         }
-        sprintSpeed = moveSpeed * sprintFactor;
+        sprintSpeed = moveSpeed * speedFactor;
 
         // Gestion du sprint
         if (Input.GetKey(KeyCode.LeftShift) && moveInput.magnitude > .5f)
@@ -89,6 +94,7 @@ public class PlayerController : MonoBehaviour
 
         // Vérifier si le joueur est au sol
         CheckGroundStatus();
+        CheckFallDamage();
 
         // Gérer les animations
         HandleAnimations();
@@ -114,7 +120,22 @@ public class PlayerController : MonoBehaviour
     private void CheckGroundStatus()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundLayer);
+
+        // Si le joueur quitte le sol, enregistrer sa position
+        if (!isGrounded)
+        {
+            if (fallStartY == 0) // Si c'est la première fois qu'il quitte le sol
+            {
+                fallStartY = transform.position.y;
+            }
+        }
+        else
+        {
+            // Réinitialiser la position de chute lorsque le joueur touche le sol
+            fallStartY = 0;
+        }
     }
+
 
     // Gérer les animations du joueur
     private void HandleAnimations()
@@ -142,6 +163,21 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isWalking", false);
             animator.SetBool("isSprinting", false);
             animator.SetBool("isJumping", false);
+        }
+    }
+
+    private void CheckFallDamage()
+    {
+        
+        if (!isGrounded && transform.position.y < fallStartY) // Le joueur est en chute
+        {
+            float fallHeight = fallStartY - transform.position.y; // Calculer la hauteur de chute
+            if (fallHeight > maxFallHeight) // Vérifier si la chute est trop haute
+            {
+                float damage = (fallHeight - maxFallHeight) * fallDamageMultiplier; // Calcul des dégâts
+                // Appliquer les dégâts au joueur (à adapter selon ta logique)
+                EventManager.instance.UpdateEnergy(EventManager.instance.GetCurrentEnergy() - damage, maxEnergy); // Méthode fictive à adapter
+            }
         }
     }
 

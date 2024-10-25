@@ -188,14 +188,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e49cc6d4f2d0ec4c8eaa881a8dce1de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 5
   initialMoveSpeed: 2
-  sprintFactor: 1.5
+  speedFactor: 1.5
   jumpForce: 5
   rotationSpeed: 10
   cameraTransform: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
+  maxFallHeight: 3
+  fallDamageMultiplier: 3
   groundCheck: {fileID: 5145033192349453565}
   groundDistance: 0.2
 --- !u!114 &4806019374199299169

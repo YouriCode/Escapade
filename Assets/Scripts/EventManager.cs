@@ -30,6 +30,7 @@ public class EventManager : MonoBehaviour
     }
     private float currentEnergy;
     private float maxEnergy;
+    private bool isInWater;
 
     void Init()
     {
@@ -77,7 +78,9 @@ public class EventManager : MonoBehaviour
     {
         currentEnergy = energy;
         maxEnergy = max;
+        Debug.Log(currentEnergy);
     }
+
     public float GetCurrentEnergy()
     {
         return currentEnergy;
@@ -86,6 +89,14 @@ public class EventManager : MonoBehaviour
     public float GetMaxEnergy()
     {
         return maxEnergy;
+    }
+
+    public void SetWaterState(bool answer) {
+        isInWater = answer;
+    }
+    
+    public bool WaterState() {
+        return isInWater;
     }
 
     public GameObject character;
