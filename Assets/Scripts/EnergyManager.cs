@@ -83,7 +83,7 @@ public class EnergyManager : MonoBehaviour
 
     void RegainEnergy()
     {
-        currentEnergy += 100f;
+        currentEnergy += 150f;
         Debug.Log("fruit mangé " + currentEnergy);
     }
 

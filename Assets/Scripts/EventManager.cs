@@ -73,7 +73,7 @@ public class EventManager : MonoBehaviour
             thisEvent.Invoke();
         }
     }
-
+     
     public void UpdateEnergy(float energy, float max)
     {
         currentEnergy = energy;
